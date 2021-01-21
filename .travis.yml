@@ -1,7 +1,7 @@
 language: scala
 
 scala:
-  - 2.13.1
+  - 2.12.4
 
 jdk:
   - oraclejdk8
@@ -10,13 +10,12 @@ jdk:
 cache:
   directories:
     - $HOME/.ivy2/cache
-    - $HOME/.sbt/boot
-
-before_cache:
-  # Cleanup the cached directories to avoid unnecessary cache updates
-  - find $HOME/.ivy2/cache -name "ivydata-*.properties" -print -delete
-  - find $HOME/.sbt        -name "*.lock"               -print -delete
+    - $HOME/.sbt/boot/
 
 script:
-  - sbt prep # See `build.sbt` to check out which tasks this alias performs (compile, compile test, style check...)
-  - sbt test
+  ## Execute the tests
+  - sbt -Dfile.encoding=UTF8 -J-XX:ReservedCodeCacheSize=256M test
+
+  # Tricks to avoid unnecessary cache updates
+  - find $HOME/.sbt -name "*.lock" | xargs rm
+  - find $HOME/.ivy2 -name "ivydata-*.properties" | xargs rm
