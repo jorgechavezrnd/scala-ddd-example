@@ -2,7 +2,7 @@
 
 [![License](https://img.shields.io/github/license/jorgechavezrnd/scala-ddd-example.svg?style=flat-square)](LICENSE)
 [![Build Status](https://img.shields.io/travis/jorgechavezrnd/scala-ddd-example/master.svg?style=flat-square)](https://travis-ci.com/jorgechavezrnd/scala-ddd-example.svg?branch=master)
-[![Coverage Status](https://img.shields.io/coveralls/github/CodelyTV/cqrs-ddd-scala-example/master.svg?style=flat-square)](https://coveralls.io/github/CodelyTV/cqrs-ddd-scala-example?branch=master)
+[![Coverage Status](https://img.shields.io/coveralls/github/jorgechavezrnd/scala-ddd-example/master.svg?style=flat-square)](https://coveralls.io/github/jorgechavezrnd/scala-ddd-example?branch=master)
 
 ## References
 - Akka HTTP: https://doc.akka.io/docs/akka-http/current/introduction.html
