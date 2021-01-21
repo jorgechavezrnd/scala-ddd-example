@@ -13,7 +13,7 @@ final class ScalaHttpApiTest extends WordSpec with GivenWhenThen {
       When("we ask him to greet someone")
 
       val nameToGreet = "CodelyTV"
-      val greeting = scalaHttpApi.greet(nameToGreet)
+      val greeting    = scalaHttpApi.greet(nameToGreet)
 
       Then("it should say hello to someone")
 
