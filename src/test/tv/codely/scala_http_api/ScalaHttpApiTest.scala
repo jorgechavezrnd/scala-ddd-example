@@ -1,23 +1,34 @@
 package tv.codely.scala_http_api
 
-import org.scalatest._
-import org.scalatest.Matchers._
+import akka.http.scaladsl.model._
+import akka.http.scaladsl.testkit.ScalatestRouteTest
+import org.scalatest.concurrent.ScalaFutures
+import org.scalatest.{Matchers, WordSpec}
+import akka.http.scaladsl.server.Directives._
 
-final class ScalaHttpApiTest extends WordSpec with GivenWhenThen {
+final class ScalaHttpApiTest extends WordSpec with Matchers with ScalaFutures with ScalatestRouteTest {
+  private val routesWithDefinedResponse =
+    get {
+      path("status") {
+        complete(HttpEntity(ContentTypes.`application/json`, """{"status":"ok"}"""))
+      }
+    }
+
   "ScalaHttpApi" should {
-    "greet" in {
-      Given("a ScalaHttpApi")
 
-      val scalaHttpApi = new ScalaHttpApi
-
-      When("we ask him to greet someone")
-
-      val nameToGreet = "CodelyTV"
-      val greeting    = scalaHttpApi.greet(nameToGreet)
-
-      Then("it should say hello to someone")
-
-      greeting shouldBe "Hello " + nameToGreet
+    /**
+      * This is a really dummy test because with it we're testing nothing but Akka HTTP routing system.
+      * As you can see in the routesWithDefinedResponses defined above, we've already provided an implementation.
+      *
+      * However, this is useful to start digging a little in how Akka HTTP testkit works and so on.
+      * More information: https://doc.akka.io/docs/akka-http/current/scala/http/routing-dsl/testkit.html
+      */
+    "respond successfully while requesting its status" in {
+      Get("/status") ~> routesWithDefinedResponse ~> check {
+        status shouldBe StatusCodes.OK
+        contentType shouldBe ContentTypes.`application/json`
+        entityAs[String] shouldBe """{"status":"ok"}"""
+      }
     }
   }
 }
