@@ -29,8 +29,8 @@ object VideoMarshaller {
     def write(value: VideoTitle): JsValue = JsString(value.value)
 
     def read(value: JsValue): VideoTitle = value match {
-      case JsString(name) => VideoTitle(name)
-      case _              => throw DeserializationException("Expected 1 string for VideoTitle")
+      case JsString(title) => VideoTitle(title)
+      case _               => throw DeserializationException("Expected 1 string for VideoTitle")
     }
   }
 
@@ -47,8 +47,8 @@ object VideoMarshaller {
     def write(value: VideoCategory): JsValue = JsString(value.toString)
 
     def read(value: JsValue): VideoCategory = value match {
-      case JsString(name) => VideoCategory(name)
-      case _              => throw DeserializationException("Expected 1 string to VideoCategory")
+      case JsString(category) => VideoCategory(category)
+      case _                  => throw DeserializationException("Expected 1 string to VideoCategory")
     }
   }
 
