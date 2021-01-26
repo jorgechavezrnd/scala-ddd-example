@@ -5,6 +5,7 @@ import akka.http.scaladsl.testkit.ScalatestRouteTest
 import org.scalatest.concurrent.ScalaFutures
 import org.scalatest.{Matchers, WordSpec}
 import spray.json._
+import tv.codely.scala_http_api.entry_point.Routes
 import tv.codely.scala_http_api.user.infrastructure.marshaller.UserMarshaller
 import tv.codely.scala_http_api.user.infrastructure.stub.UserStub
 import tv.codely.scala_http_api.video.infrastructure.marshaller.VideoMarshaller
