@@ -1,10 +1,10 @@
-package tv.codely.scala_http_api.module.user.infrastructure
+package tv.codely.scala_http_api.module.user.infrastructure.marshaller
 
-import java.util.UUID
-
-import spray.json.DefaultJsonProtocol._
+import spray.json.DefaultJsonProtocol.jsonFormat2
 import spray.json.{DeserializationException, JsString, JsValue, JsonFormat, RootJsonFormat}
 import tv.codely.scala_http_api.module.user.domain.{User, UserId, UserName}
+
+import java.util.UUID
 
 object UserMarshaller {
 
