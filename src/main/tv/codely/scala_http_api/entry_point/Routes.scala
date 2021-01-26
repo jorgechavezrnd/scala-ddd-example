@@ -8,7 +8,7 @@ import spray.json.DefaultJsonProtocol
 import tv.codely.scala_http_api.module.user.domain.User
 import tv.codely.scala_http_api.module.user.infrastructure.marshaller.UserJsonFormatMarshaller._
 import tv.codely.scala_http_api.module.video.domain.Video
-import tv.codely.scala_http_api.module.video.infrastructure.VideoMarshaller._
+import tv.codely.scala_http_api.module.video.infrastructure.marshaller.VideoJsonFormatMarshaller._
 
 import scala.concurrent.duration._
 
