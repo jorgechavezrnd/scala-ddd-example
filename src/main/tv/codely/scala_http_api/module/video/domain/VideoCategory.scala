@@ -1,4 +1,4 @@
-package tv.codely.scala_http_api.video.domain
+package tv.codely.scala_http_api.module.video.domain
 
 object VideoCategory {
   def apply(value: String): VideoCategory = value match {

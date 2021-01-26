@@ -1,7 +1,7 @@
 package tv.codely.scala_http_api.user.infrastructure.stub
 
+import tv.codely.scala_http_api.module.user.domain.UserName
 import tv.codely.scala_http_api.shared.infrastructure.stub.{IntStub, StringStub}
-import tv.codely.scala_http_api.user.domain.UserName
 
 object UserNameStub {
   private val minimumChars = 1

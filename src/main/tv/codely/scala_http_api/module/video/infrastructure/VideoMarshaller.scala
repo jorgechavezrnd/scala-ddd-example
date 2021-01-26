@@ -1,10 +1,10 @@
-package tv.codely.scala_http_api.video.infrastructure
+package tv.codely.scala_http_api.module.video.infrastructure
 
 import java.util.UUID
 
 import spray.json.{DeserializationException, JsNumber, JsString, JsValue, JsonFormat, RootJsonFormat}
 import spray.json.DefaultJsonProtocol._
-import tv.codely.scala_http_api.video.domain._
+import tv.codely.scala_http_api.module.video.domain._
 
 object VideoMarshaller {
   implicit object UuidMarshaller extends JsonFormat[UUID] {
