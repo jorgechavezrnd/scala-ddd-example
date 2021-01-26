@@ -1,4 +1,4 @@
-package tv.codely.scala_http_api.module.application
+package tv.codely.scala_http_api.module.user.application
 
 import tv.codely.scala_http_api.module.user.domain.User
 
