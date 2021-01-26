@@ -6,7 +6,7 @@ import akka.http.scaladsl.server.Directives._
 import akka.http.scaladsl.server.Route
 import spray.json.DefaultJsonProtocol
 import tv.codely.scala_http_api.module.user.domain.User
-import tv.codely.scala_http_api.module.user.infrastructure.marshaller.UserMarshaller._
+import tv.codely.scala_http_api.module.user.infrastructure.marshaller.UserJsonFormatMarshaller._
 import tv.codely.scala_http_api.module.video.domain.Video
 import tv.codely.scala_http_api.module.video.infrastructure.VideoMarshaller._
 
