@@ -1,4 +1,4 @@
-package tv.codely.scala_http_api.shared.infrastructure.stub
+package tv.codely.scala_http_api.module.shared.stub
 
 import scala.concurrent.duration._
 

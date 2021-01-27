@@ -1,7 +1,7 @@
-package tv.codely.scala_http_api.video.infrastructure.stub
+package tv.codely.scala_http_api.module.video.infrastructure.stub
 
+import tv.codely.scala_http_api.module.shared.stub.IntStub
 import tv.codely.scala_http_api.module.video.domain.VideoCategory
-import tv.codely.scala_http_api.shared.infrastructure.stub.IntStub
 
 object VideoCategoryStub {
   private val categories = Seq("Screencast", "Interviews")

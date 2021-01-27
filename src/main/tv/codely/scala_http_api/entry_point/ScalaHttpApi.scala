@@ -2,10 +2,13 @@ package tv.codely.scala_http_api.entry_point
 
 import scala.concurrent.ExecutionContextExecutor
 import scala.io.StdIn
+
 import akka.actor.ActorSystem
 import akka.http.scaladsl.Http
 import akka.stream.ActorMaterializer
 import com.typesafe.config.ConfigFactory
+import tv.codely.scala_http_api.module.user.infrastructure.dependency_injection.UserModuleDependencyContainer
+import tv.codely.scala_http_api.module.video.infrastructure.dependency_injection.VideoModuleDependencyContainer
 
 object ScalaHttpApi {
   def main(args: Array[String]): Unit = {
@@ -20,7 +23,14 @@ object ScalaHttpApi {
     implicit val materializer: ActorMaterializer            = ActorMaterializer()
     implicit val executionContext: ExecutionContextExecutor = system.dispatcher
 
-    val bindingFuture = Http().bindAndHandle(Routes.all, host, port)
+    val container = new EntryPointDependencyContainer(
+      new UserModuleDependencyContainer,
+      new VideoModuleDependencyContainer
+    )
+
+    val routes = new Routes(container)
+
+    val bindingFuture = Http().bindAndHandle(routes.all, host, port)
 
     bindingFuture.failed.foreach { t =>
       println(s"Failed to bind to http://$host:$port/:")
