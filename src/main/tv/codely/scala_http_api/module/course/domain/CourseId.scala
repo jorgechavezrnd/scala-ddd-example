@@ -1,4 +1,4 @@
-package tv.codely.scala_http_api.module.courses.domain
+package tv.codely.scala_http_api.module.course.domain
 
 import java.util.UUID
 

@@ -1,6 +1,6 @@
-package tv.codely.scala_http_api.module.courses.application.create
+package tv.codely.scala_http_api.module.course.application.create
 
-import tv.codely.scala_http_api.module.courses.domain.{Course, CourseId, CourseName, CourseRepository}
+import tv.codely.scala_http_api.module.course.domain.{Course, CourseId, CourseName, CourseRepository}
 
 final class CourseCreator(repository: CourseRepository) {
   def create(id: CourseId, name: CourseName): Unit = {

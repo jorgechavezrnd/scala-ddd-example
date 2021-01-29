@@ -1,8 +1,8 @@
-package tv.codely.scala_http_api.module.courses.infrastructure.marshaller
+package tv.codely.scala_http_api.module.course.infrastructure.marshaller
 
 import spray.json.DefaultJsonProtocol.jsonFormat2
 import spray.json.{DeserializationException, JsString, JsValue, JsonFormat, RootJsonFormat}
-import tv.codely.scala_http_api.module.courses.domain.{Course, CourseId, CourseName}
+import tv.codely.scala_http_api.module.course.domain.{Course, CourseId, CourseName}
 
 import java.util.UUID
 
