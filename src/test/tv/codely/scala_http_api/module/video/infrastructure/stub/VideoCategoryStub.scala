@@ -1,6 +1,6 @@
 package tv.codely.scala_http_api.module.video.infrastructure.stub
 
-import tv.codely.scala_http_api.module.shared.stub.IntStub
+import tv.codely.scala_http_api.module.shared.domain.IntStub
 import tv.codely.scala_http_api.module.video.domain.VideoCategory
 
 object VideoCategoryStub {
