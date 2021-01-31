@@ -1,9 +1,8 @@
-package tv.codely.scala_http_api.module.video.infrastructure.stub
-
-import java.util.UUID
+package tv.codely.scala_http_api.module.video.domain
 
 import tv.codely.scala_http_api.module.shared.domain.UuidStub
-import tv.codely.scala_http_api.module.video.domain.VideoId
+
+import java.util.UUID
 
 object VideoIdStub {
   def apply(value: String): VideoId = VideoIdStub(UuidStub(value))
