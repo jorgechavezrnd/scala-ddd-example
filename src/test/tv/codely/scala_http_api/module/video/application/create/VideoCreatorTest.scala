@@ -6,7 +6,7 @@ import tv.codely.scala_http_api.module.video.domain.VideoStub
 final class VideoCreatorTest extends VideoUnitTestCase {
   private val creator = new VideoCreator(repository)
 
-  "Videos Creator" should {
+  "Video Creator" should {
     "save a video" in {
       val video = VideoStub.random
 
