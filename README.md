@@ -35,3 +35,8 @@
 
 ## Command for test server status from console
 - `curl localhost:8080/status`
+
+## Prepare the application evironment
+1. Copy [the Docker environment variables config file](docker/.env.dist) and tune it with your desired values: `cp docker/.env.dist docker/.env`
+2. Start Docker and bring up the project needed containers: `cd docker/; docker-compose up -d`
+3. Create the database tables in your Docker MySQL container: `sbt createDbTables`
