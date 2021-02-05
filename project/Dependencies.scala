@@ -2,7 +2,7 @@ import sbt._
 
 object Dependencies {
   object Versions {
-    val akka     = "2.5.7"
+    val akka     = "2.5.8"
     val akkaHttp = "10.0.11"
   }
 
@@ -12,7 +12,10 @@ object Dependencies {
     "com.typesafe.akka"      %% "akka-http"            % Versions.akkaHttp,
     "com.typesafe.akka"      %% "akka-actor"           % Versions.akka,
     "com.typesafe.akka"      %% "akka-stream"          % Versions.akka, // Explicit dependency due to: https://bit.ly/akka-http-25
-    "com.typesafe.akka"      %% "akka-http-spray-json" % Versions.akkaHttp
+    "com.typesafe.akka"      %% "akka-http-spray-json" % Versions.akkaHttp,
+    "org.tpolecat"           %% "doobie-core"          % "0.5.0-M9",
+    "mysql"                  % "mysql-connector-java"  % "5.1.45",
+    "com.github.scopt"       %% "scopt"                % "3.7.0" // Command Line Commands such as de DbTablesCreator
   )
 
   val test = Seq(
