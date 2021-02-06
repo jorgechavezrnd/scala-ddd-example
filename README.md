@@ -9,6 +9,8 @@
 - Template for generate this project: https://github.com/CodelyTV/scala-basic-skeleton.g8
 - Scaladex: https://index.scala-lang.org/search?q=dependencies%3Aakka%2Fakka-http*
 - HOCON (for configuration files in 'conf' folder): https://github.com/lightbend/config/blob/master/HOCON.md
+- Scopt: https://github.com/scopt/scopt
+- Doobie: https://github.com/tpolecat/doobie
 
 ## Command for create this project
 - `sbt new codelytv/scala-basic-skeleton.g8` (Template URL: https://github.com/CodelyTV/scala-basic-skeleton.g8)
