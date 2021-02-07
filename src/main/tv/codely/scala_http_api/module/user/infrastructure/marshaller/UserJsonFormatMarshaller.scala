@@ -7,7 +7,6 @@ import tv.codely.scala_http_api.module.user.domain.{User, UserId, UserName}
 import java.util.UUID
 
 object UserJsonFormatMarshaller {
-
   implicit object UserNameMarshaller extends JsonFormat[UserName] {
     def write(value: UserName): JsValue = JsString(value.value)
 

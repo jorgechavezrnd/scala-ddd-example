@@ -11,4 +11,6 @@ object VideoStub {
   ): Video = Video(id, title, duration, category)
 
   def random: Video = apply()
+
+  def randomSeq: Seq[Video] = SeqStub.randomOf(apply())
 }
