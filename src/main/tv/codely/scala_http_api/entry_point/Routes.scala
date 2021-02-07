@@ -5,6 +5,7 @@ import akka.http.scaladsl.marshallers.sprayjson.SprayJsonSupport._
 import akka.http.scaladsl.server.Route
 import akka.http.scaladsl.server.Directives._
 import spray.json.JsValue
+
 import scala.concurrent.duration._
 
 final class Routes(container: EntryPointDependencyContainer) {
@@ -14,7 +15,17 @@ final class Routes(container: EntryPointDependencyContainer) {
 
   private val user = get {
     path("users")(container.userGetController.get())
-  }
+  } ~
+    post {
+      path("users") {
+        jsonBody { body =>
+          container.userPostController.post(
+            body("id").convertTo[String],
+            body("name").convertTo[String]
+          )
+        }
+      }
+    }
 
   private val video = get {
     path("videos")(container.videoGetController.get())

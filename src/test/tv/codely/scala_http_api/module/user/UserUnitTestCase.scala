@@ -10,6 +10,11 @@ protected[user] trait UserUnitTestCase extends UnitTestCase {
   // in order to make more explicit what we have and avoid making the UnitTestCase extending from MockFactory
   protected val repository: UserRepository = mock[UserRepository]
 
+  protected def repositoryShouldSave(user: User): Unit =
+    (repository.save _)
+      .expects(user)
+      .returning(Future.unit)
+
   protected def repositoryShouldFind(users: Seq[User]): Unit =
     (repository.all _)
       .expects()

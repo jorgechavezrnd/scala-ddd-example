@@ -13,6 +13,18 @@ final class UserEntryPointShould extends AcceptanceSpec {
       .unsafeToFuture()
       .futureValue
 
+  "save a user" in posting(
+    "/users",
+    """
+      |{
+      |  "id": "a11098af-d352-4cce-8372-2b48b97e6942",
+      |  "name": "Codelyver ✌"
+      |}
+      |""".stripMargin
+  ) {
+    status shouldBe StatusCodes.NoContent
+  }
+
   "return all users" in {
     cleanUsersTable()
 
