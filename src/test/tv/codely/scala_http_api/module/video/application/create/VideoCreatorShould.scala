@@ -11,6 +11,6 @@ final class VideoCreatorShould extends VideoUnitTestCase {
 
     repositoryShouldSave(video)
 
-    creator.create(video.id, video.title, video.duration, video.category) should be()
+    creator.create(video.id, video.title, video.duration, video.category) shouldBe ()
   }
 }
