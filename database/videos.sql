@@ -6,7 +6,7 @@ CREATE TABLE videos (
   category            VARCHAR(255)        NOT NULL,
   updated_at          TIMESTAMP(3)        NOT NULL DEFAULT CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3),
   PRIMARY KEY (id),
-  UNIQUE KEY u_vide_id (video_id)
+  UNIQUE KEY u_video_id (video_id)
 )
   ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4;

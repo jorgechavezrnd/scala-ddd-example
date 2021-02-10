@@ -6,7 +6,7 @@ import tv.codely.scala_http_api.module.user.domain.{User, UserRepository}
 import scala.concurrent.Future
 
 protected[user] trait UserUnitTestCase extends UnitTestCase {
-  // @ToDo: User multiple inheritance in test suites extending from UnitTestCase and this UserUnitTestCase
+  // @ToDo: Use multiple inheritance in test suites extending from UnitTestCase and this UserUnitTestCase
   // in order to make more explicit what we have and avoid making the UnitTestCase extending from MockFactory
   protected val repository: UserRepository = mock[UserRepository]
 
