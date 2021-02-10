@@ -13,6 +13,6 @@ final class VideoModuleDependencyContainer(
 )(implicit executionContext: ExecutionContext) {
   val repository: VideoRepository = new DoobieMySqlVideoRepository(doobieDbConnection)
 
-  val videosSearcher = new VideosSearcher(repository)
-  val videoCreator   = new VideoCreator(repository)
+  val videosSearcher: VideosSearcher = new VideosSearcher(repository)
+  val videoCreator: VideoCreator     = new VideoCreator(repository)
 }
