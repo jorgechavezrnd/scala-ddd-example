@@ -16,6 +16,6 @@ final class UserRegistererShould extends UnitTestCase with UserRepositoryMock wi
 
     publisherShouldPublish(userRegistered)
 
-    registerer.register(user.id, user.name) shouldBe (())
+    registerer.register(user.id, user.name).shouldBe(())
   }
 }
