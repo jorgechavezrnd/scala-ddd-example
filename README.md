@@ -45,3 +45,6 @@
 
 ## Command example for run specifics tests
 - `testOnly *DoobieMySqlUserRepositoryShould`
+
+## URL for RabbitMQ Management
+- http://localhost:8181
