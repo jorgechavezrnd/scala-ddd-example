@@ -4,6 +4,7 @@ import akka.actor.ActorSystem
 import akka.http.scaladsl.Http
 import akka.stream.ActorMaterializer
 import com.typesafe.config.ConfigFactory
+import tv.codely.scala_http_api.module.course.infrastructure.dependency_injection.CourseModuleDependencyContainer
 import tv.codely.scala_http_api.module.shared.infrastructure.config.{DbConfig, MessageBrokerConfig}
 import tv.codely.scala_http_api.module.shared.infrastructure.dependency_injection.SharedModuleDependencyContainer
 import tv.codely.scala_http_api.module.user.infrastructure.dependency_injection.UserModuleDependencyContainer
@@ -32,7 +33,8 @@ object ScalaHttpApi {
 
     val container = new EntryPointDependencyContainer(
       new UserModuleDependencyContainer(sharedDependencies.doobieDbConnection, sharedDependencies.messagePublisher),
-      new VideoModuleDependencyContainer(sharedDependencies.doobieDbConnection, sharedDependencies.messagePublisher)
+      new VideoModuleDependencyContainer(sharedDependencies.doobieDbConnection, sharedDependencies.messagePublisher),
+      new CourseModuleDependencyContainer(sharedDependencies.doobieDbConnection, sharedDependencies.messagePublisher)
     )
 
     val routes = new Routes(container)
