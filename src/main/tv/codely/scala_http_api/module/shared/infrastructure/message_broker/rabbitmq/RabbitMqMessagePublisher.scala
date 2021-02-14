@@ -7,7 +7,7 @@ import tv.codely.scala_http_api.module.shared.infrastructure.marshaller.MessageJ
 final class RabbitMqMessagePublisher(channelFactory: RabbitMqChannelFactory) extends MessagePublisher {
   private val channel = channelFactory.channel
 
-  // Use the default nameless exchange in order to route the published messages based don
+  // Use the default nameless exchange in order to route the published messages based on
   // the mapping between the message routing key and the queue names.
   // Example: A message with routing key "codelytv_scala_api.video_created"
   // will be routed to the "codelytv_scala_api.video_created" queue.
