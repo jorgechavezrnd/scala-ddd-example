@@ -54,3 +54,15 @@
 
 ## URL for RabbitMQ Management
 - http://localhost:8181
+
+## Deploy
+We use [SBT Native Packager](http://sbt-native-packager.readthedocs.io/en/latest/) in order to package the app in single Jar file that you can execute.
+
+1. Create the universal package: `sbt universal:packageBin`.
+2. Extract the generated zip: `unzip target/universal/codelytv-scala-http-api-1.0.zip -d ~/var/www/` which will contain:
+    * `bin/`: All the executable binaries of our main classes in Unix and Windows (bat) format
+    * `lib/`: All the project dependencies jar files.
+3. Run the main app binary:
+    * Without specifying any parameters (OK for this example app): `~/var/www/codelytv-scala-http-api-1.0/bin/scala-http-api`
+    * Specifying parameters for the JVM: `~/var/www/codelytv-scala-http-api-1.0/bin/scala-http-api -Dconfig.resource=application/$CONFIG_PATH`
+    * Specifying application parameters: `~/var/www/codelytv-scala-http-api-1.0/bin/scala-http-api -Dconfig.resource=application/$CONFIG_PATH -- -appParam`

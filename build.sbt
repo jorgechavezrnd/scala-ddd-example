@@ -6,6 +6,8 @@ Configuration.settings
 libraryDependencies ++= Dependencies.production
 libraryDependencies ++= Dependencies.test
 
+enablePlugins(JavaAppPackaging) // App packaging. More info: https://github.com/sbt/sbt-native-packager
+
 addCommandAlias("t", "test")
 addCommandAlias("to", "testOnly")
 addCommandAlias("tq", "testQuick")
