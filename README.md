@@ -12,6 +12,11 @@
 - Scopt: https://github.com/scopt/scopt
 - Doobie: https://github.com/tpolecat/doobie
 - Try RabbitMQ: http://tryrabbitmq.com/
+- SLF4J: http://www.slf4j.org/
+- Logging with Logback in Scala: https://www.slideshare.net/knoldus/logging-with-logback-in-scala
+- Logback configuration: https://logback.qos.ch/manual/configuration.html
+- JSON logging for Spring applications: https://sadique.io/blog/2016/06/30/json-logging-for-spring-applications/
+- Logback Logstash/JSON encoder: https://github.com/logstash/logstash-logback-encoder
 
 ## Command for create this project
 - `sbt new codelytv/scala-basic-skeleton.g8` (Template URL: https://github.com/CodelyTV/scala-basic-skeleton.g8)
