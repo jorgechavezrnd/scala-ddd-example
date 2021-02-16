@@ -16,7 +16,7 @@ object UserRegisteredJsonFormatMarshaller extends DefaultJsonProtocol {
     override def read(value: JsValue): UserRegistered =
       value.asJsObject.getFields("id", "name") match {
         case Seq(JsString(id), JsString(name)) => UserRegistered(id, name)
-        case unknown                           => throw DeserializationException(s"Error reading VideoCreated JSON <$unknown>")
+        case unknown                           => throw DeserializationException(s"Error reading UserRegistered JSON <$unknown>")
       }
   }
 }
