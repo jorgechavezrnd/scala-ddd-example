@@ -1,35 +1,38 @@
 import sbt.{Tests, _}
-import sbt.Keys._
+import Keys.{excludeFilter, exportJars, _}
+import org.scalafmt.sbt.ScalafmtPlugin.autoImport._
 
 object Configuration {
-  val settings = Seq(
+  val commonSettings = Seq(
     organization := "tv.codely",
     scalaVersion := "2.12.8",
-    // Custom folders path (/src/main/scala and /src/test/scala by default)
-    mainClass in Compile := Some("tv.codely.scala_http_api.entry_point.ScalaHttpApi"),
-    scalaSource in Compile := baseDirectory.value / "/src/main",
-    scalaSource in Test := baseDirectory.value / "/src/test",
-    resourceDirectory in Compile := baseDirectory.value / "conf",
-    // Compiler options
-    scalacOptions ++= Seq(
-      "-deprecation", // Warnings deprecation
-      "-feature", // Advise features
-      "-unchecked", // More warnings. Strict
-      "-Xlint", // More warnings when compiling
-      "-Ywarn-dead-code",
-      "-Ywarn-unused",
-      "-Ywarn-unused-import",
-      "-Xcheckinit" // Check against early initialization
-    ),
-    scalacOptions in run in Compile -= "-Xcheckinit", // Remove it in production because it's expensive
+    scalacOptions := {
+      val default = Seq(
+        "-Xlint",
+        "-Xfatal-warnings",
+        "-unchecked",
+        "-deprecation",
+        "-feature",
+        "-language:higherKinds",
+        "-Ypartial-unification"
+      )
+      if (version.value.endsWith("SNAPSHOT")) {
+        default :+ "-Xcheckinit"
+      } else { default } // check against early initialization
+    },
+    scalacOptions in (Test, console) --= Seq("-Ywarn-unused:imports", "-Xfatal-warnings"),
+    scalacOptions in (Test, console) ++= Seq("-Ywarn-unused:-imports"),
     javaOptions += "-Duser.timezone=UTC",
-    // Test options
+    fork in Test := false,
     parallelExecution in Test := false,
-    testForkedParallel in Test := false,
-    fork in Test := true,
     testOptions in Test ++= Seq(
-      Tests.Argument(TestFrameworks.ScalaTest, "-u", "target/test-reports"), // Save test reports
-      Tests.Argument("-oDF") // Show full stack traces and time spent in each test
-    )
+      Tests.Argument(TestFrameworks.ScalaTest, "-u", "target/test-reports"),
+      Tests.Argument("-oDF")
+    ),
+    cancelable in Global := true,
+    // Scalafmt
+    scalafmtConfig := Some(file(".scalafmt.conf")),
+    // OneJar
+    exportJars := true
   )
 }

@@ -1,11 +1,20 @@
+*.class
+*.log
+.envrc
+.cache
+.history
+.lib/
+dist/*
 target/
-boot/
 lib_managed/
 src_managed/
+project/boot/
 project/plugins/project/
+src/*/target
+app/target
 
 # Ignore the environment variables file intended for customize the Docker containers parameters letting each developer has its own values.
-docker/.env
+.env
 
 # Application log file and compressed previous logs (see conf/logback.xml)
 var/log/app_log.json
