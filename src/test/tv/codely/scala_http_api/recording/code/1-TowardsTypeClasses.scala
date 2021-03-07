@@ -1,8 +1,8 @@
 package tv.codely.scala_http_api
 package recording.code
 
-import tv.codely.scala_http_api.module.user.domain.{User, UserId, UserName}
-import tv.codely.scala_http_api.module.shared.domain.Message
+import application.user.api.{User, UserId, UserName}
+import effects.bus.api.Message
 
 /**
   * 1. APIs como interfaces abstractas convencionales
@@ -40,9 +40,9 @@ object ConventionalAPIs {
 
   // Otras APIs
 
-  type MessagePublisher = MessagePublsherVoid
+  type MessagePublisher = MessagePublisherVoid
 
-  trait MessagePublsherVoid {
+  trait MessagePublisherVoid {
     def publish(message: Message): Unit
   }
 
@@ -145,9 +145,9 @@ object Refactoring {
 object Instances {
 
   import doobie.implicits._
-  import tv.codely.scala_http_api.module.shared.infrastructure.persistence.doobie.TypesConversions._
+  import effects.repositories.doobie.TypesConversions._
   import scala.concurrent.{ExecutionContext, Future}
-  type DoobieDbConnection = tv.codely.scala_http_api.module.shared.infrastructure.persistence.doobie.DoobieDbConnection
+  type DoobieDbConnection = effects.repositories.doobie.DoobieDbConnection[Future]
   import cats.implicits._
 
   // import ConventionalAPIs.UserRepository
@@ -179,7 +179,6 @@ object Instances {
     override def save(user: User): Future[Unit] =
       sql"INSERT INTO users(user_id, name) VALUES (${user.id}, ${user.name})".update.run
         .transact(db.transactor)
-        .unsafeToFuture() // TODO: Delete this line after modify DoobieDbConnection!!!
         .map(_ => ())
   }
 

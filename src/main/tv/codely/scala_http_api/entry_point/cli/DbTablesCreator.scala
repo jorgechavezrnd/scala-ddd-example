@@ -2,12 +2,13 @@ package tv.codely.scala_http_api.entry_point.cli
 
 import java.io.File
 import java.sql.{Connection, DriverManager}
-import scala.util.matching.Regex
+
 import com.typesafe.config.ConfigFactory
-import tv.codely.scala_http_api.module.shared.infrastructure.config.DbConfig
+import tv.codely.scala_http_api.effects.repositories.doobie.JdbcConfig
 
 import scala.io.Source._
 import scala.util.Try
+import scala.util.matching.Regex
 
 /**
   * View usage: runMain tv.codely.scala_http_api.entry_point.cli.DbTablesCreator --usage
@@ -39,7 +40,7 @@ object DbTablesCreator {
     }
 
     parser.parse(args, CommandConfig()).fold(println("[ERROR] Invalid parameters")) { commandConfig =>
-      val dbConfig     = DbConfig(ConfigFactory.load("application").getConfig("database"))
+      val dbConfig     = JdbcConfig(ConfigFactory.load("application").getConfig("database"))
       val dbNameOption = for (grouped <- databaseNameFromUrlRegex findFirstMatchIn dbConfig.url) yield grouped group 1
 
       dbNameOption.fold(
@@ -62,9 +63,9 @@ object DbTablesCreator {
     val tablesFolderFile = new File(tablesFolder)
     val tablesFiles      = tablesFolderFile.listFiles()
 
-    println(s"[INFO] Creating the following tables: ${tablesFiles.mkString(", ")}...")
+    println(s"[INFO] Creating the following tables: ${tablesFiles.mkString(", ")}…")
 
-    val createTablesQueries = tablesFiles.map(fromFile(_).getLines().mkString)
+    val createTablesQueries = tablesFiles.map(fromFile(_).getLines.mkString)
 
     val applySchemaStatement = connection.createStatement
 
